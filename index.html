@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дні тижня</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .day {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Назви днів тижня</h1>
+    
+    <div id="daysContainer"></div>
+
+    <script>
+        "use strict";
+
+        function weekDay(size, day, color) {
+            size = size || 1;
+            day = day || 'невідомо';
+            color = color || 'black';
+
+            const fontSizes = {
+                1: '36px',
+                2: '32px',
+                3: '28px',
+                4: '24px',
+                5: '20px',
+                6: '16px',
+                7: '12px',
+            };
+
+            let fontSize = fontSizes[size] || '36px';
+            let html = `<div class="day" style="font-size: ${fontSize}; color: ${color};">${day}</div>`;
+            return html;
+        }
+
+        const days = [
+            { day: 'Неділя', size: 1, color: 'red' },
+            { day: 'Понеділок', size: 2, color: 'blue' },
+            { day: 'Вівторок', size: 3, color: 'green' },
+            { day: 'Середа', size: 4, color: 'purple' },
+            { day: 'Четвер', size: 5, color: 'orange' },
+            { day: 'П\'ятниця', size: 6, color: 'brown' },
+            { day: 'Субота', size: 7, color: 'gray' },
+        ];
+
+        const daysContainer = document.getElementById('daysContainer');
+
+        days.forEach(({ day, size, color }) => {
+            daysContainer.innerHTML += weekDay(size, day, color);
+        });
+    </script>
+</body>
+</html>
